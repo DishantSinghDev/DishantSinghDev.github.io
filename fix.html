@@ -19,7 +19,7 @@
         width: '640',
         videoId: 'FT5rgGF_DVo',
         playerVars: {
-          'autoplay': 0,
+          'autoplay': 1, // Autoplay set to 1 for automatic playback on page load
           'controls': 1,
           'showinfo': 0,
           'rel': 0,
@@ -32,8 +32,6 @@
     }
 
     function onPlayerReady(event) {
-      // Automatically start playing the video
-      event.target.playVideo();
       isPlaying = true;
 
       // Toggle play/pause on button click
