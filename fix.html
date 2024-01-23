@@ -6,7 +6,7 @@
   <title>Video Example</title>
 </head>
 <body>
-  <button id="playButton">Play Video</button>
+  <button id="playButton">Play Video Now</button>
   <div id="videoContainer" style="display: none;"></div>
 
   <script>
@@ -38,6 +38,8 @@
       } else {
         // If the API is already loaded, create the player
         onYouTubeIframeAPIReady();
+        
+        player.playVideo();
       }
     });
   </script>
