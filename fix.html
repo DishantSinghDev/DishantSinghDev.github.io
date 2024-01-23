@@ -7,8 +7,38 @@
 </head>
 <body>
   <div id="player"></div>
+  <button id="playButton">Play Video</button>
 
-  <iframe id="videoxiframe" style="width:100%;height:100%;" scrolling="no" frameborder="0" src="https://www.youtube.com/embed/FT5rgGF_DVo?autoplay=1&amp;start=&amp;end=" allow="autoplay; encrypted-media; fullscreen;" allowfullscreen="">
-</iframe>
+  <script>
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: 'FT5rgGF_DVo',
+        playerVars: {
+          'autoplay': 0,
+          'controls': 1,
+          'showinfo': 0,
+          'rel': 0,
+          'origin': 'https://your-github-username.github.io'
+        },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // Automatically start playing the video
+      event.target.playVideo();
+      
+      // Uncomment the next line if you still want the play button functionality
+      // document.getElementById('playButton').addEventListener('click', function() { event.target.playVideo(); });
+    }
+  </script>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
