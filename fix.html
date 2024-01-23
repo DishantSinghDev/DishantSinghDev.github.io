@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Issue</title>
+  <title>Video Example</title>
 </head>
 <body>
-  <div id="player"></div>
+  <button id="playButton">Play Video</button>
+  <div id="videoContainer" style="display: none;"></div>
 
   <script>
     var player;
 
     function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
+      player = new YT.Player('videoContainer', {
         height: '360',
         width: '640',
         videoId: 'FT5rgGF_DVo',
@@ -21,26 +22,24 @@
           'controls': 1,
           'showinfo': 0,
           'rel': 0,
-          'mute': 1,
-          'playsinline': 1,
-          'origin': 'https://your-github-username.github.io'
-        },
-        events: {
-          'onReady': onPlayerReady
         }
       });
     }
 
-    function onPlayerReady(event) {
-      // Unmute the video after it's ready
-      event.target.unMute();
+    document.getElementById('playButton').addEventListener('click', function() {
+      // Show the video container
+      document.getElementById('videoContainer').style.display = 'block';
 
-      // Play the video programmatically
-      event.target.playVideo();
-
-    }
+      // Load the YouTube API if not already loaded
+      if (!window.YT) {
+        var script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(script);
+      } else {
+        // If the API is already loaded, create the player
+        onYouTubeIframeAPIReady();
+      }
+    });
   </script>
-
-  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
