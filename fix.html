@@ -7,7 +7,6 @@
 </head>
 <body>
   <div id="player"></div>
-  <button id="playButton">Play Video</button>
 
   <script>
     var player;
@@ -23,6 +22,8 @@
           'showinfo': 0,
           'rel': 0,
           'mute': 1,
+          'playsinline': 1,
+          'origin': 'https://your-github-username.github.io'
         },
         events: {
           'onReady': onPlayerReady
@@ -34,7 +35,9 @@
       // Unmute the video after it's ready
       event.target.unMute();
 
-      // Your existing code...
+      // Play the video programmatically
+      event.target.playVideo();
+
     }
   </script>
 
