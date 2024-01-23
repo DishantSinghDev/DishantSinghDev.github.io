@@ -7,30 +7,22 @@
 </head>
 <body>
   <div id="player"></div>
+  <button id="playButton">Play Video</button>
 
   <script>
-    // Load the YouTube API script asynchronously
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // Variable to hold the YouTube player
     var player;
 
-    // Function called when the YouTube API script is loaded
     function onYouTubeIframeAPIReady() {
-      // Create a new YouTube player
       player = new YT.Player('player', {
         height: '360',
         width: '640',
         videoId: 'FT5rgGF_DVo',
         playerVars: {
-          'autoplay': 1,
+          'autoplay': 0, // Autoplay is set to 0 to prevent automatic playback
           'controls': 1,
           'showinfo': 0,
           'rel': 0,
-          'origin': 'https://dishantsingh.me' // Set the origin to your GitHub Pages URL
+          'origin': 'https://your-github-username.github.io'
         },
         events: {
           'onReady': onPlayerReady
@@ -38,11 +30,13 @@
       });
     }
 
-    // Function called when the YouTube player is ready
     function onPlayerReady(event) {
-      // Autoplay the video once the player is ready
-      event.target.playVideo();
+      document.getElementById('playButton').addEventListener('click', function() {
+        event.target.playVideo();
+      });
     }
   </script>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
