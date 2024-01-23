@@ -11,7 +11,6 @@
 
   <script>
     var player;
-    var isPlaying = false;
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
@@ -19,12 +18,11 @@
         width: '640',
         videoId: 'FT5rgGF_DVo',
         playerVars: {
-          'autoplay': 1, // Autoplay set to 1 for automatic playback on page load
+          'autoplay': 1,
           'controls': 1,
           'showinfo': 0,
           'rel': 0,
-          'mute': 1
-          'playsinline': 1, // Add this line
+          'mute': 1,
         },
         events: {
           'onReady': onPlayerReady
@@ -33,18 +31,10 @@
     }
 
     function onPlayerReady(event) {
-      isPlaying = true;
+      // Unmute the video after it's ready
+      event.target.unMute();
 
-      // Toggle play/pause on button click
-      document.getElementById('playButton').addEventListener('click', function() {
-        if (isPlaying) {
-          event.target.pauseVideo();
-          isPlaying = false;
-        } else {
-          event.target.playVideo();
-          isPlaying = true;
-        }
-      });
+      // Your existing code...
     }
   </script>
 
